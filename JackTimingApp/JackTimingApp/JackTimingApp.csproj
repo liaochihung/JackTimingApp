@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.0-beta4" />
+    <PackageReference Include="reactiveui-xamforms" Version="8.0.0-alpha0109" />
+    <PackageReference Include="SkiaSharp" Version="1.59.2" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.59.2" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
   </ItemGroup>
 

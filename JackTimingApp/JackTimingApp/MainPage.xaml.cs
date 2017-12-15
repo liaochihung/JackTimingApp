@@ -1,17 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JackTimingApp.ViewModel;
 using Xamarin.Forms;
 
 namespace JackTimingApp
 {
-	public partial class MainPage : ContentPage
-	{
-		public MainPage()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+
+
+        public MainPage(MainViewModel vm)
+        {
+            InitializeComponent();
+
+            BindingContext = vm;
+
+            MessagingCenter.Subscribe<MessageToken>(this, "message", (item) =>
+            {
+                switch (item.TokenType)
+                {
+                    case MessageTokenType.UpdateTimingDiagram:
+                        DrawTiming();
+                        break;
+                }
+            });
+        }
+
+        private void DrawTiming()
+        {
+            canvasView.InvalidateSurface();
+        }
+
+    }
 }
+
+
+

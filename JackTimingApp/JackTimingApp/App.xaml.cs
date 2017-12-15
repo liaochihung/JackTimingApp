@@ -1,34 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using JackTimingApp.ViewModel;
 using Xamarin.Forms;
 
 namespace JackTimingApp
 {
-	public partial class App : Application
-	{
-		public App ()
-		{
-			InitializeComponent();
+    public partial class App : Application
+    {
+        private MainViewModel _mainViewModel;
 
-			MainPage = new JackTimingApp.MainPage();
-		}
+        public App()
+        {
+            InitializeComponent();
 
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
-		}
+            _mainViewModel = new MainViewModel();
 
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
+            // if we create the restore function
+            //_mainViewModel.RestoreState();
 
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		}
-	}
+            MainPage = new JackTimingApp.MainPage(_mainViewModel);
+        }
+
+        protected override void OnStart()
+        {
+            // Handle when your app starts
+        }
+
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+            //_mainViewModel.SaveState();
+        }
+
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+        }
+    }
 }
